@@ -44,6 +44,7 @@ typedef struct s_general
 	pthread_mutex_t	eating;
 	pthread_mutex_t	forks[200];
 	pthread_mutex_t	write;
+	pthread_mutex_t death;
 }	t_general;
 
 int		ft_atoi(char	*str);
@@ -56,7 +57,9 @@ void	*ft_routine(void *arg);
 void	ft_eat(t_philo *ph);
 void	ft_sleep(t_philo *ph);
 void	ft_think(t_philo *ph);
-void	ft_time_pass(t_general *var, long time);
+void	ft_time_pass(t_general *var, long time, int nb);
 void	ft_print_msg(t_philo *ph, char *msg);
+void	ft_death(t_philo *ph);
+void	ft_check_death(t_philo *ph);
 
 #endif

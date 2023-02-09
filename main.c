@@ -76,10 +76,9 @@ void	ft_run(t_general *var)
 	var->time_start = ft_get_time();
 	while (i < var->nb_philos)
 	{
-		ph[i].last_ate = ft_get_time();
+//		ph[i].last_ate = ft_get_time();
 		pthread_create(&ph[i].pthread, NULL, ft_routine, &(ph[i]));
-		pthread_mutex_lock(&var->eating);
-		pthread_mutex_unlock(&var->eating);
+		ph[i].last_ate = ft_get_time();
 		i++;
 	}
 	i = 0;
@@ -96,27 +95,28 @@ void	ft_run(t_general *var)
 	}
 	pthread_mutex_destroy(&var->eating);
 	pthread_mutex_destroy(&var->write);
+	pthread_mutex_destroy(&var->death);
 }
 
 void	*ft_routine(void *arg)
 {
-	int		i;
 	t_philo	*ph;
 
 	ph = (t_philo *) arg;
 	if (ph->nb % 2 == 0)
 		usleep(1000);
-	i = 0;
 	while (!ph->var->is_dead && !ph->var->all_eaten)
 	{
+		ft_check_death(ph);
 		if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)
 			break ;
 		ft_eat(ph);
 		if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)
 			break ;
-		ft_sleep(ph);
-		ft_think(ph);
-		i++;
+		ft_check_death(ph);
+//		ft_sleep(ph);
+//		ft_think(ph);
+//		i++;
 	}
 	return (NULL);
 }

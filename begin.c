@@ -21,6 +21,7 @@ void	ft_initial_values(t_general *var)
 	var->all_eaten = 0;
 	pthread_mutex_init(&var->eating, NULL);
 	pthread_mutex_init(&var->write, NULL);
+	pthread_mutex_init(&var->death, NULL);
 	while (i < var->nb_philos)
 	{
 		pthread_mutex_init(&var->forks[i], NULL);

@@ -23,6 +23,7 @@ SRC = main.c\
 	  time.c\
 	  begin.c\
 	  actions.c\
+	  death.c\
 
 OBJS = $(SRC:.c=.o)
 
