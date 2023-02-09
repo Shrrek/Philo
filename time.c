@@ -21,14 +21,14 @@ long	ft_get_time(void)
 	return ((1000 * time.tv_sec) + (time.tv_usec / 1000));
 }
 
-void	ft_time_pass(t_general *var, long time, int nb)
+void	ft_time_pass(t_general *var, long time)
 {
 	long	finish;
 
 	finish = ft_get_time() + time;
 	while ((ft_get_time() < finish) && !(var->is_dead))
 	{
-		ft_check_death(&var->philosophers[nb]);
+		ft_check_death(var->philosophers);
 		usleep(100);
 	}
 }

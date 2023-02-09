@@ -76,7 +76,6 @@ void	ft_run(t_general *var)
 	var->time_start = ft_get_time();
 	while (i < var->nb_philos)
 	{
-//		ph[i].last_ate = ft_get_time();
 		pthread_create(&ph[i].pthread, NULL, ft_routine, &(ph[i]));
 		ph[i].last_ate = ft_get_time();
 		i++;
@@ -114,9 +113,6 @@ void	*ft_routine(void *arg)
 		if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)
 			break ;
 		ft_check_death(ph);
-//		ft_sleep(ph);
-//		ft_think(ph);
-//		i++;
 	}
 	return (NULL);
 }

@@ -37,36 +37,6 @@ void	ft_check_death(t_philo *ph)
 	pthread_mutex_unlock(&ph->var->death);
 }
 
-/*void	ft_eat(t_philo *ph)
-{
-	if (ph->var->is_dead == 1 || ph->var->all_eaten == 1)
-		return ;
-	pthread_mutex_lock(&ph->var->forks[ph->right_fork]);
-	if (ph->var->is_dead == 1 || ph->var->all_eaten == 1)
-		return ;
-	ft_check_death(ph);
-//	ft_check_death2(ph);
-//	ft_death(ph);
-	ft_print_msg(ph, "Has taken a r_Fork");
-	pthread_mutex_lock(&ph->var->forks[ph->left_fork]);
-	ft_print_msg(ph, "Has taken a l_Fork");
-	ft_check_death(ph);
-//	ft_check_death2(ph);
-//	ft_death(ph);
-	ft_print_msg(ph, "Is eating");
-	ph->ate++;
-	ft_check_eaten(ph);
-	if (ph->var->all_eaten == 1)
-		return ;
-	ph->last_ate = ft_get_time();
-	ft_time_pass(ph->var, ph->var->time_ate);
-	ft_check_death(ph);
-//	ft_check_death2(ph);
-//	ft_death(ph);
-	pthread_mutex_unlock(&ph->var->forks[ph->right_fork]);
-	pthread_mutex_unlock(&ph->var->forks[ph->left_fork]);
-}*/
-
 void	ft_eat(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->var->forks[ph->left_fork]);
@@ -81,25 +51,25 @@ void	ft_eat(t_philo *ph)
 	pthread_mutex_lock(&ph->var->eating);
 	ft_check_eaten(ph);
 	pthread_mutex_unlock(&ph->var->eating);
-	ft_time_pass(ph->var, ph->var->time_ate, ph->nb);
+	ft_time_pass(ph->var, ph->var->time_ate);
 	ft_check_death(ph);
 	pthread_mutex_unlock(&ph->var->forks[ph->left_fork]);
 	pthread_mutex_unlock(&ph->var->forks[ph->right_fork]);
 	ft_check_death(ph);
 	ft_print_msg(ph, "Is sleeping");
-	ft_time_pass(ph->var, ph->var->time_sleep, ph->nb);
+	ft_time_pass(ph->var, ph->var->time_sleep);
 	ft_check_death(ph);
 	ft_print_msg(ph, "Is thinking");
 }
 
-void	ft_sleep(t_philo *ph)
+/*void	ft_sleep(t_philo *ph)
 {	
 	if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)
 		return ;
 	ft_print_msg(ph, "Is sleeping");
 	if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)
 		return ;
-	ft_time_pass(ph->var, ph->var->time_sleep, ph->nb);
+	ft_time_pass(ph->var, ph->var->time_sleep);
 }
 
 void	ft_think(t_philo *ph)
@@ -109,4 +79,4 @@ void	ft_think(t_philo *ph)
 	ft_print_msg(ph, "Is thinking");
 	if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)
 		return ;
-}
+}*/
