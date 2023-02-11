@@ -102,6 +102,14 @@ void	*ft_routine(void *arg)
 	t_philo	*ph;
 
 	ph = (t_philo *) arg;
+	if (ph->var->nb_philos == 1 )
+	{
+		ft_print_msg(ph, "Has taken a l_Fork");
+		ft_time_pass(ph->var, ph->var->time_die);
+		ft_print_msg(ph, "Is DEAD!");
+		pthread_mutex_unlock(&ph->var->forks[ph->left_fork]);
+		return (NULL);
+	}
 	if (ph->nb % 2 == 0)
 		usleep(1000);
 	while (!ph->var->is_dead && !ph->var->all_eaten)
