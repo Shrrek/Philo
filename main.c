@@ -112,9 +112,12 @@ void	*ft_routine(void *arg)
 	}
 	if (ph->nb % 2 == 0)
 		usleep(1000);
+	ft_check_eaten(ph);
 	while (!ph->var->is_dead && !ph->var->all_eaten)
 	{
+//		ft_check_eaten(ph);
 		ft_check_death(ph);
+		ft_check_eaten(ph);
 		if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)
 			break ;
 		ft_eat(ph);

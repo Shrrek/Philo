@@ -21,7 +21,7 @@ void	ft_check_eaten(t_philo *ph)
 		i++;
 	if (i == ph->var->nb_philos)
 		ph->var->all_eaten = 1;
-	usleep(50);
+	usleep(200);
 }
 
 void	ft_check_death(t_philo *ph)
