@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:01:08 by jperales          #+#    #+#             */
-/*   Updated: 2022/10/26 18:10:14 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/12 11:46:40 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,17 @@ void	ft_run(t_general *var)
 		ph[i].last_ate = ft_get_time();
 		i++;
 	}
+	ft_destroy(var);
+}
+
+void	ft_destroy(t_general *var)
+{
+	int	i;
+
 	i = 0;
 	while (i < var->nb_philos)
 	{
-		pthread_join(ph[i].pthread, NULL);
+		pthread_join(var->philosophers[i].pthread, NULL);
 		i++;
 	}
 	i = 0;
@@ -102,7 +109,7 @@ void	*ft_routine(void *arg)
 	t_philo	*ph;
 
 	ph = (t_philo *) arg;
-	if (ph->var->nb_philos == 1 )
+	if (ph->var->nb_philos == 1)
 	{
 		ft_print_msg(ph, "Has taken a l_Fork");
 		ft_time_pass(ph->var, ph->var->time_die);
@@ -112,10 +119,8 @@ void	*ft_routine(void *arg)
 	}
 	if (ph->nb % 2 == 0)
 		usleep(1000);
-	ft_check_eaten(ph);
 	while (!ph->var->is_dead && !ph->var->all_eaten)
 	{
-//		ft_check_eaten(ph);
 		ft_check_death(ph);
 		ft_check_eaten(ph);
 		if (ph->var->all_eaten == 1 || ph->var->is_dead == 1)

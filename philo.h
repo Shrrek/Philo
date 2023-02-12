@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:31:38 by jperales          #+#    #+#             */
-/*   Updated: 2022/10/26 18:39:29 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/12 11:45:56 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_general
 	pthread_mutex_t	eating;
 	pthread_mutex_t	forks[200];
 	pthread_mutex_t	write;
-	pthread_mutex_t death;
+	pthread_mutex_t	death;
 }	t_general;
 
 int		ft_atoi(char	*str);
@@ -62,5 +62,6 @@ void	ft_print_msg(t_philo *ph, char *msg);
 void	ft_death(t_philo *ph);
 void	ft_check_death(t_philo *ph);
 void	ft_check_eaten(t_philo *ph);
+void	ft_destroy(t_general *var);
 
 #endif

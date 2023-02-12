@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:27:01 by jperales          #+#    #+#             */
-/*   Updated: 2022/10/26 20:13:27 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/12 11:22:36 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	ft_check_eaten(t_philo *ph)
 	int	i;
 
 	i = 0;
-	while (ph->var->nb_ates != 0 && i < ph->var->nb_philos && (ph[i].ate >= ph->var->nb_ates))
+	while (ph->var->nb_ates != 0 && i < ph->var->nb_philos
+		&& (ph[i].ate >= ph->var->nb_ates))
 		i++;
 	if (i == ph->var->nb_philos)
 		ph->var->all_eaten = 1;
