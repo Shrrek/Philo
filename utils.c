@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:33:38 by jperales          #+#    #+#             */
-/*   Updated: 2023/02/14 12:33:41 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:56:38 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_print_msg(t_philo *ph, char *msg)
 {
 	pthread_mutex_lock(&ph->var->write);
 	if (!ph->var->is_dead)
-		printf("%ld\t\tPhilo %d \t%s\n",
+		printf("%ld\t\t %d \t%s\n",
 			ft_get_time() - ph->var->time_start, ph->nb, msg);
 	pthread_mutex_unlock(&ph->var->write);
 }

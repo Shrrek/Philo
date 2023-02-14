@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 17:45:29 by jperales          #+#    #+#             */
-/*   Updated: 2023/02/14 11:53:33 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:45:05 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,4 @@ void	ft_initial_values(t_general *var)
 			var->philosophers[i].left_fork = i - 1;
 		i++;
 	}
-}
-
-void	ft_print_initial(t_general *var)
-{
-	printf("\nNumber of Philosophers:\t%3d\n", var->nb_philos);
-	printf("Time to die:\t\t%3ld\n", var->time_die);
-	printf("Time to eat:\t\t%3ld\n", var->time_ate);
-	printf("Time to sleep:\t\t%3ld\n", var->time_sleep);
-	if (var->nb_ates > 0)
-		printf("Nº of ates each Philo:\t%3d\n", var->nb_ates);
-	printf("\n\n");
-	printf("TIME(ms)\tPHILO Id\tMESSAGE\n\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:31:38 by jperales          #+#    #+#             */
-/*   Updated: 2023/02/14 12:32:46 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:57:24 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int		ft_atoi(char	*str);
 long	ft_get_time(void);
 void	ft_create_pthreads(t_general *var);
 void	ft_initial_values(t_general *var);
-void	ft_print_initial(t_general *var);
 void	ft_run(t_general *var);
 void	*ft_routine(void *arg);
 void	ft_eat(t_philo *ph);

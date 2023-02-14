@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:01:08 by jperales          #+#    #+#             */
-/*   Updated: 2023/02/14 12:28:20 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:06:49 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 	else
 		var.nb_ates = 0;
 	ft_initial_values(&var);
-	ft_print_initial(&var);
 	ft_run(&var);
 	return (0);
 }
@@ -79,9 +78,9 @@ void	*ft_routine(void *arg)
 	ph = (t_philo *) arg;
 	if (ph->var->nb_philos == 1)
 	{
-		ft_print_msg(ph, "Has taken a l_Fork");
+		ft_print_msg(ph, "has taken a fork");
 		ft_time_pass(ph->var, ph->var->time_die);
-		ft_print_msg(ph, "Is DEAD!");
+		ft_print_msg(ph, "died");
 		pthread_mutex_unlock(&ph->var->forks[ph->left_fork]);
 		return (NULL);
 	}
