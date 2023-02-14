@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:01:08 by jperales          #+#    #+#             */
-/*   Updated: 2023/02/12 11:46:40 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:28:20 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,9 @@
 int	main(int argc, char **argv)
 {
 	t_general	var;
-	int			i;
-	int			j;
 
-	i = 1;
-	j = 0;
-	if (argc < 5 || argc > 6)
-	{
-		write(1, "Error. Invalid number of arguments.\n", 36);
-		return (1);
-	}
-	while (i < argc)
-	{
-		while (argv[i][j])
-		{
-			if (argv[i][j] < '0' || argv[i][j] > '9')
-			{
-				write (1, "Error. Arguments must be numbers.\n", 34);
-				return (1);
-			}
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	if ((ft_atoi(argv[1])) > 200)
-	{
-		write (1, "Error. Number of Philosophers must be less than 200\n", 52);
-		return (1);
-	}
-	if ((ft_atoi(argv[1])) == 0 || (ft_atoi(argv[2])) == 0
-		|| (ft_atoi(argv[3])) == 0 || (ft_atoi(argv[4])) == 0)
-	{
-		write (1, "Error. Invalid arguments.\n", 26);
-		return (1);
-	}
+	ft_errors1(argc, argv);
+	ft_errors2(argv);
 	var.nb_philos = ft_atoi(argv[1]);
 	var.time_die = ft_atoi(argv[2]);
 	var.time_ate = ft_atoi(argv[3]);

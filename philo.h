@@ -6,7 +6,7 @@
 /*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 18:31:38 by jperales          #+#    #+#             */
-/*   Updated: 2023/02/12 11:45:56 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:32:46 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ void	ft_death(t_philo *ph);
 void	ft_check_death(t_philo *ph);
 void	ft_check_eaten(t_philo *ph);
 void	ft_destroy(t_general *var);
+void	ft_errors1(int argc, char **argv);
+void	ft_errors2(char **argv);
 
 #endif

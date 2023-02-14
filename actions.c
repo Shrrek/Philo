@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jperales <jperales@student.42urduli>       +#+  +:+       +#+        */
+/*   By: jperales <jperales@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:27:01 by jperales          #+#    #+#             */
-/*   Updated: 2023/02/12 11:22:36 by jperales         ###   ########.fr       */
+/*   Updated: 2023/02/14 11:52:40 by jperales         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_check_eaten(t_philo *ph)
 		&& (ph[i].ate >= ph->var->nb_ates))
 		i++;
 	if (i == ph->var->nb_philos)
-		ph->var->all_eaten = 1;
+		ph->var->is_dead = 1;
 	usleep(200);
 }
 
@@ -42,10 +42,8 @@ void	ft_eat(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->var->forks[ph->left_fork]);
 	ft_print_msg(ph, "Has taken a l_Fork");
-	ft_check_death(ph);
 	pthread_mutex_lock(&ph->var->forks[ph->right_fork]);
 	ft_print_msg(ph, "Has taken a r_Fork");
-	ft_check_death(ph);
 	ft_print_msg(ph, "Is eating");
 	ph->last_ate = ft_get_time();
 	ph->ate++;
@@ -53,10 +51,8 @@ void	ft_eat(t_philo *ph)
 	ft_check_eaten(ph);
 	pthread_mutex_unlock(&ph->var->eating);
 	ft_time_pass(ph->var, ph->var->time_ate);
-	ft_check_death(ph);
 	pthread_mutex_unlock(&ph->var->forks[ph->left_fork]);
 	pthread_mutex_unlock(&ph->var->forks[ph->right_fork]);
-	ft_check_death(ph);
 	ft_print_msg(ph, "Is sleeping");
 	ft_time_pass(ph->var, ph->var->time_sleep);
 	ft_check_death(ph);
